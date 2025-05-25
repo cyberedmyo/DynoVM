@@ -1,6 +1,6 @@
 # DynoVM – Akıllı Sanal Makine Kaynak Optimizasyonu
 
-Bu proje, sanal makinelerdeki RAM kullanımını izleyerek kaynak ihtiyacı oluştuğunda **otomatik olarak RAM artırımı yapan** kural tabanlı (Rule-Based AI) bir sistemdir.
+Bu proje, sanal makinelerdeki RAM kullanımını izleyerek kaynak ihtiyacı oluştuğunda otomatik olarak RAM artırımı, gereksiz yüksek kaynak tahsisi durumunda ise otomatik olarak RAM azaltımı yapan kural tabanlı (Rule-Based AI) bir sistemdir.
 
 ## 🔧 Nasıl Çalışır?
 
