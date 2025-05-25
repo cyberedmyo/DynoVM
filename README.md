@@ -11,6 +11,12 @@ Bu proje, sanal makinelerdeki RAM kullanımını izleyerek kaynak ihtiyacı olu�
    - Sanal makine kapanır.
    - RAM artırılır.
    - Makine tekrar açılır.
+5. RAM %20’nin altına düştüğünde:
+   - Sanal makine kapanır.
+   - RAM azaltılır.
+   - Makine tekrar açılır.
+
+📌 Bu eşik değerleri ve RAM miktarları kullanıcı tarafından script dosyasında kolayca güncellenebilir yapıdadır.
 
 ## 📌 Kullanılan Teknolojiler
 - Python
