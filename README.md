@@ -19,7 +19,19 @@ Bu proje, sanal makinelerdeki RAM kullanımını izleyerek kaynak ihtiyacı olu�
 - `psutil`, `os`, `time` modülleri
 
 ## ⚙️ Kurulum
-Kurulum ve kullanım detayları için `usage.txt` ya da açıklama dökümanına bakınız.
+# Kali tarafında
+sudo mkdir /mnt/shared
+sudo mount -t vboxsf shared /mnt/shared
+cp /mnt/shared/ram_logger.py ~/
+python3 ~/ram_logger.py
+
+# Windows tarafında (CMD)
+Not: VBoxManage komutu çalışmıyorsa PATH ayarı da açıklanmalı.
+set PATH=%PATH%;"C:\Program Files\Oracle\VirtualBox"
+VBoxManage list vms      (kali vm adı gözükür)
+
+cd "C:\Users\ozder\OneDrive\Desktop\DynoVM_Share"
+python increase_ram.py
 
 ## 📈 Potansiyel Kullanım Alanları
 - Bulut sunucu yöneticileri
