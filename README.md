@@ -19,6 +19,9 @@ Bu proje, sanal makinelerdeki RAM kullanımını izleyerek kaynak ihtiyacı olu�
 - `psutil`, `os`, `time` modülleri
 
 ## ⚙️ Kurulum
+🔧 **Not:** Kodlarda geçen klasör ve dosya yolları (`path`) örnek olarak verilmiştir.  
+ Lütfen kendi sisteminizdeki klasör yapısına göre bu yolları **kendinize uygun şekilde değiştirin.**
+
 # Kali tarafında
 sudo mkdir /mnt/shared
 sudo mount -t vboxsf shared /mnt/shared
@@ -33,6 +36,15 @@ VBoxManage list vms      (kali vm adı gözükür)
 cd "C:\Users\ozder\OneDrive\Desktop\DynoVM_Share"
 python increase_ram.py
 
+💡 RAM kullanımını zorlamak için:
+Aşağıdaki komutla RAM kullanımını geçici olarak artırabilirsin:
+sudo apt install stress -y
+stress --vm 2 --vm-bytes 512M --timeout 60s
+
+💡 RAM artırımı sonrası doğrulama yapmak için:
+Aşağıdaki komutu kullanarak RAM değeri güncellenmiş mi kontrol edebilirsin:
+VBoxManage showvminfo "kali-linux-2025.1c-virtualbox-amd64"
+
 ## 📈 Potansiyel Kullanım Alanları
 - Bulut sunucu yöneticileri
 - Kaynak sıkışması yaşanan VM ortamları
@@ -40,4 +52,6 @@ python increase_ram.py
 
 ## 🧠 Not
 Bu sistemde AI basit kurallarla çalışmaktadır. Gelecekte tahminsel modelleme ile desteklenebilir.
+
+Kodlarda verilen pathleri kendinize uygun yaz
 
