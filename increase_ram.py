@@ -1,9 +1,15 @@
 import os
 import time
 
+# 💡 Kullanıcı tanımlı parametreler
 vm_name = "kali-linux-2025.1c-virtualbox-amd64"
-usage_file = "C:/Users/ozder/OneDrive/Desktop/DynoVM_Share/usage.txt"
+usage_file = "C:/Users/ozder/OneDrive/Desktop/DynoVM_Shared/usage.txt"
 
+ram_high_threshold = 85   # Yüzde olarak üst sınır
+ram_low_threshold = 20    # Yüzde olarak alt sınır
+
+ram_high_value = 4096     # MB cinsinden artırılmış RAM
+ram_low_value = 2048      # MB cinsinden azaltılmış RAM
 
 def read_usage():
     try:
@@ -15,30 +21,32 @@ def read_usage():
         print(f"Hata: {e}")
         return 0, 0
 
+def change_ram(new_ram_mb):
+    print(f"\n🔄 RAM değeri değiştiriliyor: {new_ram_mb} MB")
 
-def increase_ram(new_ram_mb):
-    print(f"💡 RAM artırılıyor: {new_ram_mb} MB")
-
-    #  1) Makineyi kapat
+    # 1️⃣ Makineyi kapat
     os.system(f'VBoxManage controlvm "{vm_name}" poweroff')
     time.sleep(5)
 
-    #  2) RAM miktarını artır
+    # 2️⃣ RAM miktarını değiştir
     os.system(f'VBoxManage modifyvm "{vm_name}" --memory {new_ram_mb}')
 
-    #  3) Tekrar başlat
+    # 3️⃣ Makineyi arayüzle başlat
     os.system(f'VBoxManage startvm "{vm_name}" --type gui')
 
-    print("✅ RAM artırımı tamamlandı ve makine tekrar başlatıldı.")
+    print("✅ RAM değişimi tamamlandı ve makine tekrar başlatıldı.\n")
 
-
-# İzleme döngüsü
+# 🔁 İzleme döngüsü
 while True:
     ram, cpu = read_usage()
     print(f"RAM: {ram}%  |  CPU: {cpu}%")
 
-    if ram > 85:
-        increase_ram(4096)  # RAM’i 4096 MB yap
+    if ram > ram_high_threshold:
+        change_ram(ram_high_value)
+        break
+
+    elif ram < ram_low_threshold:
+        change_ram(ram_low_value)
         break
 
     time.sleep(5)
